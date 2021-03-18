@@ -10,8 +10,6 @@ import (
 	"time"
 )
 
-const TIMEOUT = 30 * time.Second
-
 func main() {
 	l := log.New(os.Stdout, "intro", log.LstdFlags)
 	hh := handlers.NewHello(l)
