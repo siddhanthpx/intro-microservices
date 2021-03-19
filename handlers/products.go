@@ -17,5 +17,9 @@ func NewProducts(l *log.Logger) *Products {
 
 func (p *Products) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 	lp := data.GetProducts()
-
+	nenc := json.NewEncoder(rw)
+	err := nenc.Encode(lp)
+	if err != nil {
+		http.Error(rw, "Unable to marshal JSON", http.StatusInternalServerError)
+	}
 }
